@@ -54,8 +54,8 @@ loadarch () {
 	fi
 	export CXX=$cc_triple-clang++
 	export LDFLAGS="-Wl,-O1,--icf=safe -Wl,-z,max-page-size=16384 -Wl,--sort-common -Wl,--as-needed -Wl,-z,pack-relative-relocs -s"
-	export CFLAGS="-O3 -march=armv9-a+nofp16 -fno-plt -pipe -fvectorize -funroll-loops -mllvm -polly -mllvm -polly-run-inliner -mllvm -polly-ast-use-context -mllvm -polly-detect-keep-going -mllvm -polly-invariant-load-hoisting -mllvm -polly-vectorizer=stripmine -mllvm -polly-loopfusion-greedy=1 -mllvm -polly-reschedule=1 -mllvm -polly-postopts=1 -mllvm -polly-run-dce -mllvm -regalloc-enable-advisor=release -mllvm -hot-cold-split=true -flto=auto"
-	export CXXFLAGS="-O3 -march=armv9-a+nofp16 -fno-plt -pipe -fvectorize -funroll-loops -mllvm -polly -mllvm -polly-run-inliner -mllvm -polly-ast-use-context -mllvm -polly-detect-keep-going -mllvm -polly-invariant-load-hoisting -mllvm -polly-vectorizer=stripmine -mllvm -polly-loopfusion-greedy=1 -mllvm -polly-reschedule=1 -mllvm -polly-postopts=1 -mllvm -polly-run-dce -mllvm -regalloc-enable-advisor=release -mllvm -hot-cold-split=true -flto=auto"
+	export CFLAGS="-O3 -march=armv8.7-a -fno-plt -pipe -fvectorize -funroll-loops -mllvm -polly -mllvm -polly-run-inliner -mllvm -polly-ast-use-context -mllvm -polly-detect-keep-going -mllvm -polly-invariant-load-hoisting -mllvm -polly-vectorizer=stripmine -mllvm -polly-loopfusion-greedy=1 -mllvm -polly-reschedule=1 -mllvm -polly-postopts=1 -mllvm -polly-run-dce -mllvm -regalloc-enable-advisor=release -mllvm -hot-cold-split=true -flto=auto"
+	export CXXFLAGS="-O3 -march=armv8.7-a -fno-plt -pipe -fvectorize -funroll-loops -mllvm -polly -mllvm -polly-run-inliner -mllvm -polly-ast-use-context -mllvm -polly-detect-keep-going -mllvm -polly-invariant-load-hoisting -mllvm -polly-vectorizer=stripmine -mllvm -polly-loopfusion-greedy=1 -mllvm -polly-reschedule=1 -mllvm -polly-postopts=1 -mllvm -polly-run-dce -mllvm -regalloc-enable-advisor=release -mllvm -hot-cold-split=true -flto=auto"
 	export AR=llvm-ar
 	export RANLIB=llvm-ranlib
 }
