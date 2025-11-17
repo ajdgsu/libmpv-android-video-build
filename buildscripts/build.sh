@@ -54,8 +54,8 @@ loadarch () {
 	fi
 	export CXX=$cc_triple-clang++
 	export LDFLAGS="-Wl,-O1,--icf=safe -Wl,-z,max-page-size=16384 -Wl,--sort-common -Wl,--as-needed -Wl,-z,pack-relative-relocs -s"
-	#export CFLAGS="-O3 -mfpu=neon -march=armv8.7-a -fno-plt -pipe -fvectorize -funroll-loops"
-	#export CXXFLAGS="-O3 -mfpu=neon -march=armv8.7-a -fno-plt -pipe -fvectorize -funroll-loops"
+	export CFLAGS="-O3 -march=armv8.7-a -fno-plt -pipe -fvectorize -funroll-loops"
+	export CXXFLAGS="-O3 -march=armv8.7-a -fno-plt -pipe -fvectorize -funroll-loops"
 	export AR=llvm-ar
 	export RANLIB=llvm-ranlib
 }
