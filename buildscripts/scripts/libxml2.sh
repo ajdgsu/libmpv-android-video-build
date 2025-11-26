@@ -26,6 +26,7 @@ cd _build$ndk_suffix
     --with-threads \
     --with-tree \
     --without-lzma \
+	--host=aarch64-linux-android
 
 make -j$cores
 make DESTDIR="$prefix_dir" install
