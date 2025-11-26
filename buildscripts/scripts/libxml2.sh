@@ -25,8 +25,8 @@ cd _build$ndk_suffix
     --with-minimum \
     --with-threads \
     --with-tree \
-    --without-lzma \
-	--host=aarch64-unknown-linux-android
-
+    --without-lzma
+	
+find . -name "config.log" -exec cat {} \;
 make -j$cores
 make DESTDIR="$prefix_dir" install
