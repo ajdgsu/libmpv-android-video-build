@@ -1,5 +1,9 @@
 #!/bin/bash -e
 
+export ac_cv_header_sys_timeb_h=no
+export host_alias=aarch64-linux-android
+export build_alias=x86_64-pc-linux-gnu
+
 . ../../include/depinfo.sh
 . ../../include/path.sh
 
@@ -16,10 +20,6 @@ fi
 
 mkdir -p _build$ndk_suffix
 cd _build$ndk_suffix
-
-export ac_cv_header_sys_timeb_h=no
-export host_alias=aarch64-linux-android
-export build_alias=x86_64-pc-linux-gnu
 
     echo -e "\n-----------------\configure help start\n-----------------\n"
 	../configure --help
