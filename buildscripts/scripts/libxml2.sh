@@ -26,7 +26,7 @@ cd _build$ndk_suffix
     --with-threads \
     --with-tree \
     --without-lzma
-	
-find . -name "config.log" -exec cat {} \;
+
+find ../ -name "config.log" -exec cat {} \;
 make -j$cores
 make DESTDIR="$prefix_dir" install
