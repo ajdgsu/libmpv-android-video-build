@@ -4,6 +4,10 @@ export ac_cv_header_sys_timeb_h=no
 export host_alias=aarch64-linux-android
 export build_alias=x86_64-pc-linux-gnu
 
+sudo -E add-apt-repository ppa:deadsnakes/ppa -y
+sudo -E apt update
+sudo -E apt install python3.12
+
 . ../../include/depinfo.sh
 . ../../include/path.sh
 
