@@ -17,7 +17,7 @@ fi
 # --------------------------------------------------
 
 if [ ! -f "scripts/ffmpeg" ]; then
-  sudo rm scripts/ffmpeg.sh
+  rm scripts/ffmpeg.sh
 fi
 cp flavors/default.sh scripts/ffmpeg.sh
 
