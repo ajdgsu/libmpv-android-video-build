@@ -23,6 +23,9 @@ cp flavors/default.sh scripts/ffmpeg.sh
 
 # --------------------------------------------------
 
+sudo chmod 755 ./build.sh
+./build.sh
+
 ./build.sh
 
 zip -r debug-symbols-default.zip prefix/*/lib
