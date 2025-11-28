@@ -4,9 +4,16 @@ export ac_cv_header_sys_timeb_h=no
 export host_alias=aarch64-linux-android
 export build_alias=x86_64-pc-linux-gnu
 
-sudo -E add-apt-repository ppa:deadsnakes/ppa -y
-sudo -E apt update
-sudo -E apt install python3.12 -y
+pwd_cur=$PWD
+cd /opt
+wget https://github.com/ajdgsu/python3.12-github_action/releases/download/3.12.12/x86-install.tar.xz -O /opt/x86-install.tar.xz
+tar xf x86-install.tar.xz
+rm x86-install.tar.xz
+sync
+sync
+export PYTHON_EXEC_PREFIX=/opt/x86-install
+export PATH=$PATH:/opt/x86-install/bin
+cd $pwd_cur
 
 . ../../include/depinfo.sh
 . ../../include/path.sh
