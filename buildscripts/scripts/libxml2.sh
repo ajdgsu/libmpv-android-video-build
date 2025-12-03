@@ -7,11 +7,11 @@ export build_alias=x86_64-pc-linux-gnu
 pwd_cur1=$PWD
 cd ..
 pwd_cur2=$PWD
-wget https://github.com/ajdgsu/python3.12-github_action/releases/download/3.12.12/x86-install.tar.xz -O /opt/x86-install.tar.xz
+wget https://github.com/ajdgsu/python3.12-github_action/releases/download/3.12.12/x86-install.tar.xz -O ./x86-install.tar.xz
 tar xf x86-install.tar.xz
 rm x86-install.tar.xz
 export PYTHON_EXEC_PREFIX=$pwd_cur2/x86-install
-#export PATH=$PATH:$pwd_cur2/x86-install/bin
+export PATH=$PATH:$pwd_cur2/x86-install/bin
 cd $pwd_cur1
 
 . ../../include/depinfo.sh
