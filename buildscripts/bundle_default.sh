@@ -20,7 +20,7 @@ cp flavors/default.sh scripts/ffmpeg.sh
 
 ./build.sh
 
-zip -r debug-symbols-default.zip prefix/*/lib
+zip -q -r debug-symbols-default.zip prefix/*/lib
 
 ./sdk/android-sdk-linux/ndk/27.3.13750724/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip --strip-all prefix/arm64-v8a/usr/local/lib/libmpv.so
 ./sdk/android-sdk-linux/ndk/27.3.13750724/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip --strip-all prefix/armeabi-v7a/usr/local/lib/libmpv.so
@@ -34,7 +34,7 @@ cd deps/media-kit-android-helper
 sudo chmod +x gradlew
 ./gradlew assembleRelease
 
-unzip -o app/build/outputs/apk/release/app-release.apk -d app/build/outputs/apk/release
+unzip -q -o app/build/outputs/apk/release/app-release.apk -d app/build/outputs/apk/release
 
 cp ../../prefix/arm64-v8a/usr/local/lib/libmpv.so      app/build/outputs/apk/release/lib/arm64-v8a
 cp ../../prefix/armeabi-v7a/usr/local/lib/libmpv.so    app/build/outputs/apk/release/lib/armeabi-v7a
