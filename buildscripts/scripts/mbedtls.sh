@@ -29,9 +29,7 @@ $0 clean
 
 
 # 2. Create the build directory and enter it.
-git submodule update --init
 mkdir -p "$build_dir"
-cd "$build_dir"
 
 
 # 3. Configure the project with CMake.
@@ -39,7 +37,7 @@ cd "$build_dir"
 #    -DENABLE_TESTING=OFF : This is the CMake equivalent of the old 'no_test' make target.
 #                          It builds the library and programs but skips the test suites.
 echo "Configuring with CMake..."
-cmake -DENABLE_TESTING=OFF -DCMAKE_BUILD_TYPE=Release ..
+cmake ${build_dir} -DENABLE_TESTING=OFF -DCMAKE_BUILD_TYPE=Release ..
 
 
 # 4. Build the project and install it.
@@ -49,7 +47,7 @@ cmake -DENABLE_TESTING=OFF -DCMAKE_BUILD_TYPE=Release ..
 #    - -- : Separates CMake options from options passed to the underlying build tool (like make).
 #    - DESTDIR="$prefix_dir" : The installation prefix, passed to the underlying tool.
 echo "Building and installing..."
-cmake --build . --target install --parallel "$cores" -- DESTDIR="$prefix_dir"
+cmake --build ${build_dir} --target install --parallel "$cores" -- DESTDIR="$prefix_dir"
 
 
 echo "Mbed TLS build and installation complete."
