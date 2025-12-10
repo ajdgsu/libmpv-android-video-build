@@ -11,9 +11,9 @@ fi
 
 # --------------------------------------------------
 
-if [ ! -f "scripts/ffmpeg" ]; then
-  rm scripts/ffmpeg.sh
-fi
+#if [ ! -f "scripts/ffmpeg" ]; then
+#  rm scripts/ffmpeg.sh
+#fi
 cp flavors/default.sh scripts/ffmpeg.sh
 
 # --------------------------------------------------
