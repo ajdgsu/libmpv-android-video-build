@@ -6,8 +6,7 @@
 if [ "$1" == "build" ]; then
 	true
 elif [ "$1" == "clean" ]; then
-	make clean
-	exit 0
+	true
 else
 	exit 255
 fi
