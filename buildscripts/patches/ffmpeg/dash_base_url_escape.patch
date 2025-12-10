@@ -1,5 +1,5 @@
---- libavformat/dashdec.c 2025-11-20 10:31:18.000000000 +0800
-+++ libavformat/dashdec.c        2025-12-10 13:07:43.675575017 +0800
+--- a/libavformat/dashdec.c 2025-11-20 10:31:18.000000000 +0800
++++ b/libavformat/dashdec.c        2025-12-10 13:07:43.675575017 +0800
 @@ -780,7 +780,9 @@
      }
      root_url = (av_strcasecmp(baseurl, "")) ? baseurl : path;
