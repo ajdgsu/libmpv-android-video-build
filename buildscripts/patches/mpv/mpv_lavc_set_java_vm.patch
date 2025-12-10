@@ -3,7 +3,7 @@
 @@ -1731,6 +1731,15 @@
  MPV_EXPORT void mpv_wakeup(mpv_handle *ctx);
 
- /**
++ /**
 + * Calls av_jni_set_java_vm() with the given JavaVM*.
 + * https://github.com/FFmpeg/FFmpeg/blob/0ba719f726632d73592311615087a0d64aa2fb60/libavcodec/jni.h#L26-L36
 + *
@@ -12,7 +12,7 @@
 + */
 +MPV_EXPORT int mpv_lavc_set_java_vm(void *vm);
 +
-+/**
+/**
   * Set a custom function that should be called when there are new events. Use
   * this if blocking in mpv_wait_event() to wait for new events is not feasible.
   *
