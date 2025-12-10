@@ -115,7 +115,7 @@ build () {
 	pushd deps/$1
 	BUILDSCRIPT=../../scripts/$1.sh
  	sudo chmod +x $BUILDSCRIPT
-	[ $cleanbuild -eq 1 ] && $BUILDSCRIPT clean
+	#[ $cleanbuild -eq 1 ] && $BUILDSCRIPT clean
     $BUILDSCRIPT build
     popd
 }
