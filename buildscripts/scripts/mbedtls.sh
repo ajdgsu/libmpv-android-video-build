@@ -29,6 +29,7 @@ $0 clean
 
 
 # 2. Create the build directory and enter it.
+git submodule update --init
 mkdir -p "$build_dir"
 cd "$build_dir"
 
