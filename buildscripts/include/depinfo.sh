@@ -6,18 +6,18 @@ v_sdk=11076708_latest
 v_ndk=29.0.14206865
 v_sdk_build_tools=35.0.0
 
-v_libass=0.17.1
-v_harfbuzz=7.2.0
-v_fribidi=1.0.12
-v_freetype=2-13-0
-v_mbedtls=3.4.0
-v_dav1d=1.2.0
-v_libxml2=2.10.3
+v_libass=0.17.4
+v_harfbuzz=12.2.0
+v_fribidi=1.0.16
+v_freetype=2-14-1
+v_mbedtls=4.0.0
+v_dav1d=1.5.2
+v_libxml2=2.15.1
 v_ffmpeg=8.0.1
 v_mpv=e48ac7ce08462f5e33af6ef9deeac6fa87eef01e
-v_libogg=1.3.5
+v_libogg=1.3.6
 v_libvorbis=1.3.7
-v_libvpx=1.13
+v_libvpx=1.15.2
 
 
 ## Dependency tree
