@@ -15,6 +15,9 @@ mkdir -p deps && cd deps
 # libxml2
 [ ! -d libxml2 ] && git clone --depth 1 --branch v$v_libxml2 --recursive https://gitlab.gnome.org/GNOME/libxml2.git libxml2
 
+# libiconv
+[ ! -d libiconv ] && $WGET https://ftp.gnu.org/pub/gnu/libiconv/libiconv-$v_libiconv.tar.gz && tar -xf libiconv-$v_libiconv.tar.gz && mv libiconv-$v_libiconv libiconv && rm libiconv-$v_libiconv.tar.gz
+
 # libogg
 [ ! -d libogg ] && $WGET https://github.com/xiph/ogg/releases/download/v${v_libogg}/libogg-${v_libogg}.tar.gz && tar -xf libogg-${v_libogg}.tar.gz && mv libogg-${v_libogg} libogg && rm libogg-${v_libogg}.tar.gz
 
