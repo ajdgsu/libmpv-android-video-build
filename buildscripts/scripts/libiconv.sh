@@ -1,8 +1,8 @@
 #!/bin/bash -e
 
 export ac_cv_header_sys_timeb_h=no
-export host_alias=aarch64-linux-android
-export build_alias=x86_64-pc-linux-gnu
+#export host_alias=aarch64-linux-android
+#export build_alias=x86_64-pc-linux-gnu
 
 . ../../include/depinfo.sh
 . ../../include/path.sh
@@ -26,8 +26,10 @@ echo -e "\n-----------------\nconfigure help start\n-----------------\n"
 echo -e "\n-----------------\nconfigure help end\n-----------------\n"
 
 # Use simplified compiler flags to avoid compatibility issues
-CFLAGS="-O3 -mcpu=cortex-a725 -fno-plt -pipe -fvectorize -funroll-loops -mllvm -polly -mllvm -polly-run-inliner -mllvm -polly-ast-use-context -mllvm -polly-detect-keep-going -mllvm -polly-invariant-load-hoisting -mllvm -polly-vectorizer=stripmine -mllvm -polly-loopfusion-greedy=1 -mllvm -polly-reschedule=1 -mllvm -polly-postopts=1 -mllvm -polly-run-dce -mllvm -hot-cold-split=true -fPIC"
-CXXFLAGS="-O3 -mcpu=cortex-a725 -fno-plt -pipe -fvectorize -funroll-loops -mllvm -polly -mllvm -polly-run-inliner -mllvm -polly-ast-use-context -mllvm -polly-detect-keep-going -mllvm -polly-invariant-load-hoisting -mllvm -polly-vectorizer=stripmine -mllvm -polly-loopfusion-greedy=1 -mllvm -polly-reschedule=1 -mllvm -polly-postopts=1 -mllvm -polly-run-dce -mllvm -hot-cold-split=true -fPIC"
+#CFLAGS="-O3 -mcpu=cortex-a725 -fno-plt -pipe -fvectorize -funroll-loops -mllvm -polly -mllvm -polly-run-inliner -mllvm -polly-ast-use-context -mllvm -polly-detect-keep-going -mllvm -polly-invariant-load-hoisting -mllvm -polly-vectorizer=stripmine -mllvm -polly-loopfusion-greedy=1 -mllvm -polly-reschedule=1 -mllvm -polly-postopts=1 -mllvm -polly-run-dce -mllvm -hot-cold-split=true -fPIC"
+#CXXFLAGS="-O3 -mcpu=cortex-a725 -fno-plt -pipe -fvectorize -funroll-loops -mllvm -polly -mllvm -polly-run-inliner -mllvm -polly-ast-use-context -mllvm -polly-detect-keep-going -mllvm -polly-invariant-load-hoisting -mllvm -polly-vectorizer=stripmine -mllvm -polly-loopfusion-greedy=1 -mllvm -polly-reschedule=1 -mllvm -polly-postopts=1 -mllvm -polly-run-dce -mllvm -hot-cold-split=true -fPIC"
+CFLAGS="-O3 -mcpu=cortex-a725 -fno-plt -pipe -fPIC"
+CXXFLAGS="-O3 -mcpu=cortex-a725 -fno-plt -pipe -fPIC"
 
 # Set host and build aliases based on ndk_triple
 export host_alias=$ndk_triple
