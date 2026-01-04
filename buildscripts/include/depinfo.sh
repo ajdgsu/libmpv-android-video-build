@@ -13,6 +13,7 @@ v_freetype=2-14-1
 v_mbedtls=4.0.0
 v_dav1d=1.5.2
 v_libxml2=2.15.1
+v_libiconv=1.18
 v_ffmpeg=8.0.1
 v_mpv=41f6a645068483470267271e1d09966ca3b9f413
 v_libogg=1.3.6
@@ -25,9 +26,10 @@ v_libvpx=1.15
 
 dep_mbedtls=()
 dep_dav1d=()
+dep_libxml2=(libiconv)
 dep_libvorbis=(libogg)
 if [ -n "$ENCODERS_GPL" ]; then
-	dep_ffmpeg=(mbedtls dav1d libxml2 libvorbis libvpx libx264)
+	dep_ffmpeg=(mbedtls dav1d libxml2 libvorbis libx264)
 else
 	dep_ffmpeg=(mbedtls dav1d libxml2)
 fi
