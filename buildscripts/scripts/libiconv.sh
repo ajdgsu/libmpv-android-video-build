@@ -61,7 +61,7 @@ export ac_cv_iconv=no
 export ac_cv_lib_iconv=no
 
 ../configure \
-    --disable-shared \
+    --enable-shared \
     --enable-static \
     --with-minimum \
     --with-threads=no \

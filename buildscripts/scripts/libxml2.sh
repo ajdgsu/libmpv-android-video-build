@@ -21,13 +21,14 @@ fi
 mkdir -p _build$ndk_suffix
 cd _build$ndk_suffix
 
-    echo -e "\n-----------------\configure help start\n-----------------\n"
-	../configure --help
-	echo -e "\n-----------------\configure help end\n-----------------\n"
+    #echo -e "\n-----------------\configure help start\n-----------------\n"
+	#../configure --help
+	#echo -e "\n-----------------\configure help end\n-----------------\n"
 	CFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=cortex-a725 -fno-plt -pipe -fvectorize -funroll-loops -mllvm -polly -mllvm -polly-run-inliner -mllvm -polly-ast-use-context -mllvm -polly-detect-keep-going -mllvm -polly-invariant-load-hoisting -mllvm -polly-vectorizer=stripmine -mllvm -polly-loopfusion-greedy=1 -mllvm -polly-reschedule=1 -mllvm -polly-postopts=1 -mllvm -polly-run-dce -mllvm -hot-cold-split=true -fPIC" \
 	CXXFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=cortex-a725 -fno-plt -pipe -fvectorize -funroll-loops -mllvm -polly -mllvm -polly-run-inliner -mllvm -polly-ast-use-context -mllvm -polly-detect-keep-going -mllvm -polly-invariant-load-hoisting -mllvm -polly-vectorizer=stripmine -mllvm -polly-loopfusion-greedy=1 -mllvm -polly-reschedule=1 -mllvm -polly-postopts=1 -mllvm -polly-run-dce -mllvm -hot-cold-split=true -fPIC" \
 	CPPFLAGS="-I$prefix_dir/include" \
-	LDFLAGS="-L$prefix_dir/lib" \
+	LDFLAGS="-L$prefix_dir/lib -liconv" \
+	LIBS="-liconv" \
 	../configure \
     --disable-shared \
     --enable-static \
@@ -37,9 +38,9 @@ cd _build$ndk_suffix
     --without-lzma \
     --with-iconv="$prefix_dir"
 
-echo -e "\n-----------------\nconfig.log start\n-----------------\n"
-find ../ -name "config.log" -exec cat {} \;
-echo -e "\n-----------------\nconfig.log end\n-----------------\n"
+#echo -e "\n-----------------\nconfig.log start\n-----------------\n"
+#find ../ -name "config.log" -exec cat {} \;
+#echo -e "\n-----------------\nconfig.log end\n-----------------\n"
 
 make -j$cores
 make DESTDIR="$prefix_dir" install
