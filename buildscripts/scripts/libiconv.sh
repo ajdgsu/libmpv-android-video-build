@@ -1,10 +1,8 @@
 #!/bin/bash -e
 
 export ac_cv_header_sys_timeb_h=no
-
-export ac_cv_func_iconv=yes
-export ac_cv_func_iconv_open=yes
-export ac_cv_func_iconv_close=yes
+#export host_alias=aarch64-linux-android
+#export build_alias=x86_64-pc-linux-gnu
 
 . ../../include/depinfo.sh
 . ../../include/path.sh
@@ -27,12 +25,22 @@ echo -e "\n-----------------\nconfigure help start\n-----------------\n"
 ../configure --help
 echo -e "\n-----------------\nconfigure help end\n-----------------\n"
 
-CFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=cortex-a725 -fno-plt -pipe -fPIC"
-CXXFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=cortex-a725 -fno-plt -pipe -fPIC"
-
+# Set host and build aliases based on ndk_triple
 export host_alias=$ndk_triple
 export build_alias=x86_64-pc-linux-gnu
 
+# Set cross-compiler explicitly
+export CC="${ndk_triple}clang"
+export CXX="${ndk_triple}clang++"
+export AR="${ndk_triple}ar"
+export RANLIB="${ndk_triple}ranlib"
+export STRIP="${ndk_triple}strip"
+
+# Use basic compiler flags compatible with Android NDK
+CFLAGS="-fPIC -O2 -Wno-error -Wno-error=implicit-function-declaration"
+CXXFLAGS="-fPIC -O2 -Wno-error -Wno-error=implicit-function-declaration"
+
+# Disable functions that are not available on Android
 export ac_cv_func_canonicalize_file_name=no
 export ac_cv_func_error=no
 export ac_cv_func_fnmatch_gnu=no
@@ -54,8 +62,6 @@ export ac_cv_func_unsetenv=no
 export ac_cv_func_wctomb=no
 export ac_cv_func_writev=no
 
-export CPPFLAGS="-I$prefix_dir/include"
-
 ../configure \
     --enable-shared \
     --enable-static \
@@ -66,11 +72,7 @@ export CPPFLAGS="-I$prefix_dir/include"
     --host=$host_alias \
     --disable-rpath \
     --disable-symlink \
-    --disable-external-libiconv \
-    CPPFLAGS="$CPPFLAGS" \
-    CFLAGS="$CFLAGS" \
-    LDFLAGS="-L$prefix_dir/lib" \
-    LIBS="-liconv"
+    --disable-external-libiconv
 
 echo -e "\n-----------------\nconfig.log start\n-----------------\n"
 find ../ -name "config.log" -exec cat {} \;
