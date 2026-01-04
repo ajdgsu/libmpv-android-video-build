@@ -57,8 +57,6 @@ export ac_cv_func_tzset=no
 export ac_cv_func_unsetenv=no
 export ac_cv_func_wctomb=no
 export ac_cv_func_writev=no
-export ac_cv_iconv=no
-export ac_cv_lib_iconv=no
 
 ../configure \
     --enable-shared \
