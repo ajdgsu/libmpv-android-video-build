@@ -1,3 +1,5 @@
+#!/bin/bash -e
+
 # --------------------------------------------------
 
 export LDFLAGS="-Wl,-O1,--icf=safe -Wl,-z,max-page-size=16384 -Wl,--sort-common -Wl,--as-needed -Wl,-z,pack-relative-relocs"
