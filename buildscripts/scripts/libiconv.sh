@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 
 export ac_cv_header_sys_timeb_h=no
 #export host_alias=aarch64-linux-android
@@ -77,6 +77,7 @@ export ac_cv_func_writev=no
 echo -e "\n-----------------\nconfig.log start\n-----------------\n"
 find ../ -name "config.log" -exec cat {} \;
 echo -e "\n-----------------\nconfig.log end\n-----------------\n"
+return 1
 
 make -j$cores
 make DESTDIR="$prefix_dir" install
