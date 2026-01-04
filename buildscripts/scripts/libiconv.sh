@@ -58,6 +58,8 @@ export ac_cv_func_unsetenv=no
 export ac_cv_func_wctomb=no
 export ac_cv_func_writev=no
 
+CPPFLAGS="-I.."
+
 ../configure \
     --enable-shared \
     --enable-static \
