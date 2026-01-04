@@ -30,11 +30,11 @@ export host_alias=$ndk_triple
 export build_alias=x86_64-pc-linux-gnu
 
 # Set cross-compiler explicitly
-export CC="${ndk_triple}clang"
-export CXX="${ndk_triple}clang++"
-export AR="${ndk_triple}ar"
-export RANLIB="${ndk_triple}ranlib"
-export STRIP="${ndk_triple}strip"
+export CC="${ndk_triple}-clang"
+export CXX="${ndk_triple}-clang++"
+export AR="${ndk_triple}-ar"
+export RANLIB="${ndk_triple}-ranlib"
+export STRIP="${ndk_triple}-strip"
 
 # Use basic compiler flags compatible with Android NDK
 CFLAGS="-fPIC -O2 -Wno-error -Wno-error=implicit-function-declaration"
