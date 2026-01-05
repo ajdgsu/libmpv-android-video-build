@@ -38,7 +38,7 @@ cd "$build_dir"
 #    -DENABLE_TESTING=OFF : This is the CMake equivalent of the old 'no_test' make target.
 #                          It builds the library and programs but skips the test suites.
 echo "Configuring with CMake..."
-cmake .. -DENABLE_TESTING=OFF -DCMAKE_BUILD_TYPE=Release ..
+cmake .. -DENABLE_TESTING=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local ..
 
 
 # 4. Build the project and install it.

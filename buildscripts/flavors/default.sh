@@ -26,7 +26,7 @@ cpuflags=
 ../configure \
 	--target-os=android --enable-cross-compile --cross-prefix=$ndk_triple- --ar=$AR --cc=$CC --ranlib=$RANLIB \
 	--arch=${ndk_triple%%-*} --cpu=$cpu --pkg-config=pkg-config \
-	--extra-cflags="-I$prefix_dir/include -I$prefix_dir/usr/local/include -I$prefix_dir/usr/local/include/mbedtls -I$prefix_dir/usr/local/include/mbedtls/private $cpuflags" --extra-ldflags="-L$prefix_dir/lib -L$prefix_dir/usr/local/lib" \
+	--extra-cflags="-I$prefix_dir/include -I$prefix_dir/usr/local/include $cpuflags" --extra-ldflags="-L$prefix_dir/lib -L$prefix_dir/usr/local/lib" \
 	\
 	--disable-gpl \
 	--disable-nonfree \
