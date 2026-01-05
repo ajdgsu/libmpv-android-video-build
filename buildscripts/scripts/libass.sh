@@ -14,6 +14,8 @@ fi
 
 [ -f configure ] || ./autogen.sh
 
+make distclean 2>/dev/null || true
+
 mkdir -p _build$ndk_suffix
 cd _build$ndk_suffix
 
