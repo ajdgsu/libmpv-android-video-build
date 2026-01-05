@@ -34,8 +34,6 @@ cd _build$ndk_suffix
     --enable-static \
     --with-minimum \
     --with-threads=no \
-    --with-tree \
-    --without-lzma \
     --with-iconv="$prefix_dir"
 
 #echo -e "\n-----------------\nconfig.log start\n-----------------\n"
