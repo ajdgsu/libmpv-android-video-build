@@ -70,9 +70,9 @@ export ac_cv_func_writev=no
     --disable-symlink \
     --disable-external-libiconv
 
-echo -e "\n-----------------\nconfig.log start\n-----------------\n"
-find ../ -name "config.log" -exec cat {} \;
-echo -e "\n-----------------\nconfig.log end\n-----------------\n"
+#echo -e "\n-----------------\nconfig.log start\n-----------------\n"
+#find ../ -name "config.log" -exec cat {} \;
+#echo -e "\n-----------------\nconfig.log end\n-----------------\n"
 
 make -j$cores
 make DESTDIR="$prefix_dir" install
