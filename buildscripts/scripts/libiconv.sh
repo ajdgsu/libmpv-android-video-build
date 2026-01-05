@@ -1,4 +1,4 @@
-#!/bin/bash -
+#!/bin/bash -e
 
 export ac_cv_header_sys_timeb_h=no
 #export host_alias=aarch64-linux-android
