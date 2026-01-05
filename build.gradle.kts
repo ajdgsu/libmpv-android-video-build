@@ -16,6 +16,6 @@ tasks.wrapper {
     distributionType = Wrapper.DistributionType.ALL
 }
 
-apply {
-    from("$rootDir/scripts/publish-root.gradle")
-}
+// apply {
+//     from("$rootDir/scripts/publish-root.gradle")
+// }

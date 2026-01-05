@@ -38,7 +38,7 @@ NM="llvm-nm" \
 --disable-doc \
 --disable-programs \
 --disable-avdevice \
---disable-avfilter \
+--enable-avfilter \
 --disable-encoders \
 --disable-decoders \
 --disable-muxers \
@@ -53,8 +53,8 @@ NM="llvm-nm" \
 --enable-demuxer=matroska,webm \
 --enable-decoder=av1,vorbis \
 --enable-parser=av1,vorbis \
---extra-cflags="$CFLAGS -I$prefix_dir/include -I$prefix_dir/include/mbedtls/private -I$prefix_dir/usr/local/include" \
---extra-ldflags="$LDFLAGS -L$prefix_dir/lib -L$prefix_dir/usr/local/lib" \
+--extra-cflags="$CFLAGS -I$prefix_dir/include" \
+--extra-ldflags="$LDFLAGS -L$prefix_dir/lib" \
 --cc="$CC" \
 --cxx="$CXX" \
 --nm="llvm-nm" \
