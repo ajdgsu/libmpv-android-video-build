@@ -113,6 +113,7 @@ cpuflags=
 	--enable-protocol=srt \
 	\
 	--enable-network \
+	--enable-lto=full
 
 make -j$cores
 make DESTDIR="$prefix_dir" install

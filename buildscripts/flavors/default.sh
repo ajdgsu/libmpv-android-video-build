@@ -252,6 +252,7 @@ cpuflags=
 	--enable-encoder=jpegls \
 	\
 	--enable-network \
+	--enable-lto=full
 
 make -j$cores
 make DESTDIR="$prefix_dir" install
