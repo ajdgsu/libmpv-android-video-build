@@ -31,19 +31,34 @@ jobs:
         echo "Current directory: $(pwd)"
         echo "HOME directory: $HOME"
         echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+        echo "Listing all files in current directory:"
         ls -la
         echo "Checking buildscripts directory..."
         if [ -d "buildscripts" ]; then
           echo "buildscripts directory exists"
+          echo "Listing files in buildscripts directory:"
           ls -la buildscripts
           cd buildscripts
           echo "Current directory after cd: $(pwd)"
+          echo "Listing files in buildscripts directory after cd:"
           ls -la
-          ./build.sh --arch arm64
+          echo "Checking if build.sh exists:"
+          if [ -f "build.sh" ]; then
+            echo "build.sh exists"
+            echo "Adding execute permissions to build.sh..."
+            chmod +x build.sh
+            echo "Trying to run build.sh..."
+            ./build.sh --arch arm64
+          else
+            echo "ERROR: build.sh not found in buildscripts directory!"
+            exit 1
+          fi
         else
           echo "ERROR: buildscripts directory not found!"
-          echo "Listing all directories:"
-          find / -type d -name "*build*" 2>/dev/null | grep -E "(libmpv|buildscripts)" | head -20
+          echo "Listing all directories in repository:"
+          find . -type d -name "*build*" | head -20
+          echo "Listing all files in repository root:"
+          ls -la /home/runner/work/libmpv-android-video-build/libmpv-android-video-build 2>/dev/null || echo "Cannot access repository root"
           exit 1
         fi
 
