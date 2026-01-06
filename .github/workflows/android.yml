@@ -30,10 +30,20 @@ jobs:
         set -e
         echo "Current directory: $(pwd)"
         ls -la
-        cd buildscripts
-        echo "Current directory after cd: $(pwd)"
-        ls -la
-        ./build.sh --arch arm64
+        echo "Checking buildscripts directory..."
+        if [ -d "buildscripts" ]; then
+          echo "buildscripts directory exists"
+          ls -la buildscripts
+          cd buildscripts
+          echo "Current directory after cd: $(pwd)"
+          ls -la
+          ./build.sh --arch arm64
+        else
+          echo "ERROR: buildscripts directory not found!"
+          echo "Listing all directories:"
+          find . -type d -name "*build*" | head -20
+          exit 1
+        fi
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
