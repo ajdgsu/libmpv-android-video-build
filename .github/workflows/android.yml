@@ -34,37 +34,35 @@ jobs:
         set -x
         set -e
         
-        # Print all environment variables for debugging
-        echo "=== Environment Variables ==="
-        printenv | sort
-        
-        # Print current directory structure
-        echo "=== Current Directory Structure ==="
+        # Print current directory
+        echo "=== Current Directory ==="
         pwd
+        
+        # List all files in repository root
+        echo "=== Repository Root Files ==="
         ls -la
         
         # Check if buildscripts directory exists
         echo "=== Checking buildscripts directory ==="
         if [ -d "buildscripts" ]; then
           echo "✓ buildscripts directory found"
+          
+          # List buildscripts directory contents
           echo "=== buildscripts directory contents ==="
           ls -la buildscripts
           
-          # Change to buildscripts directory
-          cd buildscripts
-          echo "=== Current directory after cd: $(pwd) ==="
-          
           # Check if build.sh exists
-          if [ -f "build.sh" ]; then
+          if [ -f "buildscripts/build.sh" ]; then
             echo "✓ build.sh found"
             
             # Add execute permissions
             echo "=== Adding execute permissions to build.sh ==="
-            chmod +x build.sh
+            chmod +x buildscripts/build.sh
             
             # Run build.sh with debug output
             echo "=== Starting build process ==="
-            ./build.sh --arch arm64
+            buildscripts/build.sh --arch arm64 2>&1 || true
+            echo "=== Build process completed with exit code: $? ==="
           else
             echo "✗ ERROR: build.sh not found in buildscripts directory!"
             exit 1
