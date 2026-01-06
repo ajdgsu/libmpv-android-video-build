@@ -16,6 +16,10 @@ fi
 
 make distclean 2>/dev/null || true
 
+# Debug: Check if mbedtls headers are installed
+echo "Checking for mbedtls headers in $prefix_dir/include/mbedtls/"
+ls -la $prefix_dir/include/mbedtls/ 2>/dev/null || echo "No mbedtls headers found"
+
 mkdir -p _build$ndk_suffix
 cd _build$ndk_suffix
 
@@ -53,7 +57,7 @@ NM="llvm-nm" \
 --enable-demuxer=matroska,webm \
 --enable-decoder=av1,vorbis \
 --enable-parser=av1,vorbis \
---extra-cflags="$CFLAGS -I$prefix_dir/include" \
+--extra-cflags="$CFLAGS -I$prefix_dir/include -I$prefix_dir/include/mbedtls/private" \
 --extra-ldflags="$LDFLAGS -L$prefix_dir/lib" \
 --cc="$CC" \
 --cxx="$CXX" \
