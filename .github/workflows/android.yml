@@ -73,6 +73,8 @@ jobs:
           exit 1
         fi
       shell: bash
+      env:
+        CI_DEBUG: "true"
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
