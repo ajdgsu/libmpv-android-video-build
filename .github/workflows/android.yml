@@ -51,8 +51,15 @@ jobs:
             echo "Adding execute permissions to build.sh..."
             chmod +x build.sh
             echo "Trying to run build.sh..."
-            # Capture build.sh output to diagnose failure
-            ./build.sh --arch arm64 || (echo "Build failed! Last 50 lines of output:" && tail -50 build.log && exit 1)
+            # Redirect all output to build.log and stdout simultaneously
+            ./build.sh --arch arm64 2>&1 | tee build.log
+            # Check exit code
+            exit_code=${PIPESTATUS[0]}
+            if [ $exit_code -ne 0 ]; then
+              echo "Build failed with exit code $exit_code! Last 50 lines of output:"
+              tail -50 build.log
+              exit $exit_code
+            fi
           else
             echo "ERROR: build.sh not found in buildscripts directory!"
             exit 1
