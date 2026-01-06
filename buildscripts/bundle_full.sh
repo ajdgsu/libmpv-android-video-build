@@ -3,8 +3,8 @@
 # --------------------------------------------------
 
 export LDFLAGS="-Wl,-O1,--icf=safe -Wl,-z,max-page-size=16384 -Wl,--sort-common -Wl,--as-needed -Wl,-z,pack-relative-relocs"
-	export CFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=cortex-a725 -fno-plt -pipe -fvectorize -funroll-loops -flto=auto"
-	export CXXFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=cortex-a725 -fno-plt -pipe -fvectorize -funroll-loops -flto=auto"
+	export CFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=oryon-1 -fno-plt -pipe -fvectorize -funroll-loops -flto=auto"
+	export CXXFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=oryon-1 -fno-plt -pipe -fvectorize -funroll-loops -flto=auto"
 
 if [ -d "deps" ]; then
   sudo rm -r deps

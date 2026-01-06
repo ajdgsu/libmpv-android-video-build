@@ -29,7 +29,7 @@ NM="llvm-nm" \
 --prefix="$prefix_dir" \
 --target-os=android \
 --arch=aarch64 \
---cpu=cortex-a725 \
+--cpu=oryon-1 \
 --cross-prefix="$ndk_triple-" \
 --sysroot="$ndk_sysroot" \
 --enable-cross-compile \

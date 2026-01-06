@@ -20,8 +20,8 @@ mkdir -p _build$ndk_suffix
 cd _build$ndk_suffix
 
 ../configure \
-	CFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=cortex-a725 -fno-plt -pipe -fvectorize -funroll-loops -fPIC" \
-	CXXFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=cortex-a725 -fno-plt -pipe -fvectorize -funroll-loops -fPIC" \
+	CFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=oryon-1 -fno-plt -pipe -fvectorize -funroll-loops -fPIC" \
+	CXXFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=oryon-1 -fno-plt -pipe -fvectorize -funroll-loops -fPIC" \
 	--host=$ndk_triple \
 	--with-pic \
 	--disable-asm \

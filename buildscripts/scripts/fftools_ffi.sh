@@ -16,7 +16,7 @@ fi
 
 unset CC CXX # meson wants these unset
 
-CFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=cortex-a725 -fno-plt -pipe -fvectorize -funroll-loops -flto=auto -fPIC" CXXFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=cortex-a725 -fno-plt -pipe -fvectorize -funroll-loops -flto=auto -fPIC" meson setup $build --cross-file "$prefix_dir"/crossfile.txt
+CFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=oryon-1 -fno-plt -pipe -fvectorize -funroll-loops -flto=auto -fPIC" CXXFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=oryon-1 -fno-plt -pipe -fvectorize -funroll-loops -flto=auto -fPIC" meson setup $build --cross-file "$prefix_dir"/crossfile.txt
 
 ninja -C $build -j$cores
 DESTDIR="$prefix_dir" ninja -C $build install

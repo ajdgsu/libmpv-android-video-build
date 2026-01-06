@@ -26,8 +26,8 @@ cd _build$ndk_suffix
     #echo -e "\n-----------------\configure help start\n-----------------\n"
 	#../configure --help
 	#echo -e "\n-----------------\configure help end\n-----------------\n"
-	CFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=cortex-a725 -fno-plt -pipe -fvectorize -funroll-loops -fPIC" \
-	CXXFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=cortex-a725 -fno-plt -pipe -fvectorize -funroll-loops -fPIC" \
+	CFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=oryon-1 -fno-plt -pipe -fvectorize -funroll-loops -fPIC" \
+	CXXFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=oryon-1 -fno-plt -pipe -fvectorize -funroll-loops -fPIC" \
 	CPPFLAGS="-I$prefix_dir/include" \
 	LDFLAGS="-L$prefix_dir/lib -liconv" \
 	LIBS="-liconv" \

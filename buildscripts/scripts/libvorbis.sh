@@ -20,7 +20,7 @@ sed s/\-mno\-ieee\-fp// -i {configure,configure.ac}
 
 unset CC CXX # meson wants these unset
 
-CFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=cortex-a725 -fno-plt -pipe -fvectorize -funroll-loops -fPIC" CXXFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=cortex-a725 -fno-plt -pipe -fvectorize -funroll-loops -fPIC" meson setup $build --cross-file "$prefix_dir"/crossfile.txt -Ddefault_library=static
+CFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=oryon-1 -fno-plt -pipe -fvectorize -funroll-loops -fPIC" CXXFLAGS="-Wno-error -Wno-error=implicit-function-declaration -O3 -mcpu=oryon-1 -fno-plt -pipe -fvectorize -funroll-loops -fPIC" meson setup $build --cross-file "$prefix_dir"/crossfile.txt -Ddefault_library=static
 
 meson compile -C $build libvorbis
 DESTDIR="$prefix_dir" ninja -C $build install
