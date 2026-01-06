@@ -27,6 +27,7 @@ jobs:
 
     - name: Build project
       run: |
+        set -e
         cd buildscripts
         ./build.sh --arch arm64
 
