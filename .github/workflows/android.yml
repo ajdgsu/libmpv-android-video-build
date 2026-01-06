@@ -29,6 +29,8 @@ jobs:
       run: |
         set -e
         echo "Current directory: $(pwd)"
+        echo "HOME directory: $HOME"
+        echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
         ls -la
         echo "Checking buildscripts directory..."
         if [ -d "buildscripts" ]; then
@@ -41,7 +43,7 @@ jobs:
         else
           echo "ERROR: buildscripts directory not found!"
           echo "Listing all directories:"
-          find . -type d -name "*build*" | head -20
+          find / -type d -name "*build*" 2>/dev/null | grep -E "(libmpv|buildscripts)" | head -20
           exit 1
         fi
 
