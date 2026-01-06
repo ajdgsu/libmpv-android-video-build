@@ -28,7 +28,11 @@ jobs:
     - name: Build project
       run: |
         set -e
-        cd /home/ajdgsu/source/libmpv-android-video-build/buildscripts
+        echo "Current directory: $(pwd)"
+        ls -la
+        cd buildscripts
+        echo "Current directory after cd: $(pwd)"
+        ls -la
         ./build.sh --arch arm64
 
     - name: Upload artifact
