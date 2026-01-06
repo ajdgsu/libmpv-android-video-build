@@ -29,47 +29,49 @@ jobs:
 
     - name: Build project
       run: |
-        set -x  # Enable debug tracing
+        # Enable debug tracing and exit on error
+        set -x
         set -e
-        echo "Current directory: $(pwd)"
-        echo "HOME directory: $HOME"
-        echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
-        echo "Listing all files in current directory:"
+        
+        # Print all environment variables for debugging
+        echo "=== Environment Variables ==="
+        printenv | sort
+        
+        # Print current directory structure
+        echo "=== Current Directory Structure ==="
+        pwd
         ls -la
-        echo "Checking buildscripts directory..."
+        
+        # Check if buildscripts directory exists
+        echo "=== Checking buildscripts directory ==="
         if [ -d "buildscripts" ]; then
-          echo "buildscripts directory exists"
-          echo "Listing files in buildscripts directory:"
+          echo "✓ buildscripts directory found"
+          echo "=== buildscripts directory contents ==="
           ls -la buildscripts
+          
+          # Change to buildscripts directory
           cd buildscripts
-          echo "Current directory after cd: $(pwd)"
-          echo "Listing files in buildscripts directory after cd:"
-          ls -la
-          echo "Checking if build.sh exists:"
+          echo "=== Current directory after cd: $(pwd) ==="
+          
+          # Check if build.sh exists
           if [ -f "build.sh" ]; then
-            echo "build.sh exists"
-            echo "Adding execute permissions to build.sh..."
+            echo "✓ build.sh found"
+            
+            # Add execute permissions
+            echo "=== Adding execute permissions to build.sh ==="
             chmod +x build.sh
-            echo "Trying to run build.sh..."
-            # Redirect all output to build.log and stdout simultaneously
-            ./build.sh --arch arm64 2>&1 | tee build.log
-            # Check exit code
-            exit_code=${PIPESTATUS[0]}
-            if [ $exit_code -ne 0 ]; then
-              echo "Build failed with exit code $exit_code! Last 50 lines of output:"
-              tail -50 build.log
-              exit $exit_code
-            fi
+            
+            # Run build.sh with debug output
+            echo "=== Starting build process ==="
+            ./build.sh --arch arm64
           else
-            echo "ERROR: build.sh not found in buildscripts directory!"
+            echo "✗ ERROR: build.sh not found in buildscripts directory!"
             exit 1
           fi
         else
-          echo "ERROR: buildscripts directory not found!"
-          echo "Listing all directories in repository:"
+          echo "✗ ERROR: buildscripts directory not found!"
+          echo "=== Searching for build directories ==="
           find . -type d -name "*build*" | head -20
-          echo "Listing all files in repository root:"
-          ls -la /home/runner/work/libmpv-android-video-build/libmpv-android-video-build 2>/dev/null || echo "Cannot access repository root"
           exit 1
         fi
       shell: bash
