@@ -28,7 +28,7 @@ jobs:
     - name: Build project
       run: |
         set -e
-        cd buildscripts
+        cd /home/ajdgsu/source/libmpv-android-video-build/buildscripts
         ./build.sh --arch arm64
 
     - name: Upload artifact
