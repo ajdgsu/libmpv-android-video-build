@@ -29,6 +29,7 @@ jobs:
 
     - name: Build project
       run: |
+        set -x  # Enable debug tracing
         set -e
         echo "Current directory: $(pwd)"
         echo "HOME directory: $HOME"
@@ -50,7 +51,8 @@ jobs:
             echo "Adding execute permissions to build.sh..."
             chmod +x build.sh
             echo "Trying to run build.sh..."
-            ./build.sh --arch arm64
+            # Capture build.sh output to diagnose failure
+            ./build.sh --arch arm64 || (echo "Build failed! Last 50 lines of output:" && tail -50 build.log && exit 1)
           else
             echo "ERROR: build.sh not found in buildscripts directory!"
             exit 1
