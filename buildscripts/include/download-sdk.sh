@@ -16,7 +16,7 @@ if [ "$os" == "linux" ]; then
 		apt-get -v &>/dev/null && {
 		    sudo apt-get update;
 			sudo apt-get install -y autoconf pkg-config libtool ninja-build nasm unzip \
-			python3-pip python3-setuptools unzip libc6-arm64-cross;
+			python3-pip python3-setuptools unzip libc6-arm64-cross ibplacebo-dev;
 			sudo pip3 install meson; }
 	fi
 
