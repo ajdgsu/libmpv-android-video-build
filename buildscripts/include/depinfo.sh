@@ -29,9 +29,10 @@ dep_mbedtls=()
 dep_dav1d=()
 dep_libxml2=(libiconv)
 dep_libvorbis=(libogg)
-dep_libplacebo=()
-if [ -n "$ENCODERS_GPL" ]; then
-	dep_ffmpeg=(mbedtls dav1d libxml2 libvorbis libx264)
+
+if [ -n "${ENCODERS_GPL+x}" ]; then
+	dep_ffmpeg=(mbedtls dav1d libxml2 libvorbis libvpx libx264)
+
 else
 	dep_ffmpeg=(mbedtls dav1d libxml2)
 fi
@@ -41,8 +42,9 @@ dep_harfbuzz=()
 dep_libass=(freetype fribidi harfbuzz)
 dep_lua=()
 dep_shaderc=()
-if [ -n "$ENCODERS_GPL" ]; then
-	dep_mpv=(ffmpeg libass libplacebo lua fftools_ffi)
+
+if [ -n "${ENCODERS_GPL+x}" ]; then
+	dep_mpv=(ffmpeg libass fftools_ffi)
 else
 	dep_mpv=(ffmpeg libass libplacebo lua)
 fi

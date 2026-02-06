@@ -1,6 +1,6 @@
 #!/bin/bash -e
+set -euxo pipefail
 
-# --------------------------------------------------
 if [ -d "deps" ]; then
   sudo rm -r deps
 fi
@@ -13,9 +13,9 @@ fi
 
 # --------------------------------------------------
 
-#if [ ! -f "scripts/ffmpeg" ]; then
-#  rm scripts/ffmpeg.sh
-#fi
+if [ -f "scripts/ffmpeg" ]; then
+  rm scripts/ffmpeg.sh
+fi
 cp flavors/default.sh scripts/ffmpeg.sh
 
 # --------------------------------------------------
@@ -24,10 +24,11 @@ cp flavors/default.sh scripts/ffmpeg.sh
 
 zip -q -r debug-symbols-default.zip prefix/*/lib
 
-./sdk/android-sdk-linux/ndk/27.3.13750724/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip --strip-all prefix/arm64-v8a/usr/local/lib/libmpv.so
-./sdk/android-sdk-linux/ndk/27.3.13750724/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip --strip-all prefix/armeabi-v7a/usr/local/lib/libmpv.so
-./sdk/android-sdk-linux/ndk/27.3.13750724/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip --strip-all prefix/x86/usr/local/lib/libmpv.so
-./sdk/android-sdk-linux/ndk/27.3.13750724/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip --strip-all prefix/x86_64/usr/local/lib/libmpv.so
+. ./include/depinfo.sh
+./sdk/android-sdk-linux/ndk/$v_ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip --strip-all prefix/arm64-v8a/usr/local/lib/libmpv.so
+./sdk/android-sdk-linux/ndk/$v_ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip --strip-all prefix/armeabi-v7a/usr/local/lib/libmpv.so
+./sdk/android-sdk-linux/ndk/$v_ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip --strip-all prefix/x86/usr/local/lib/libmpv.so
+./sdk/android-sdk-linux/ndk/$v_ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip --strip-all prefix/x86_64/usr/local/lib/libmpv.so
 
 # --------------------------------------------------
 
