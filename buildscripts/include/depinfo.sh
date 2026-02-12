@@ -10,7 +10,7 @@ v_libass=0.17.4
 v_harfbuzz=12.2.0
 v_fribidi=1.0.16
 v_freetype=2-14-1
-v_mbedtls=4.0.0
+v_mbedtls=3.6.2
 v_dav1d=1.5.2
 v_libxml2=2.15.1
 v_libiconv=1.18
@@ -20,6 +20,7 @@ v_libogg=1.3.6
 v_libvorbis=1.3.7
 v_libvpx=1.15
 v_libplacebo=6.338.2
+v_lua=5.2.4
 
 
 ## Dependency tree

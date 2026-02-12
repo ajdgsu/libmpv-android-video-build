@@ -45,6 +45,12 @@ mkdir -p deps && cd deps
 # libass
 [ ! -d libass ] && git clone --depth 1 --branch $v_libass https://github.com/libass/libass.git libass
 
+# libplacebo
+[ ! -d libplacebo ] && git clone --depth 1 --branch v$v_libplacebo https://code.videolan.org/videolan/libplacebo.git libplacebo
+
+# lua
+[ ! -d lua ] && $WGET https://www.lua.org/ftp/lua-$v_lua.tar.gz && tar -xf lua-$v_lua.tar.gz && mv lua-$v_lua lua && rm lua-$v_lua.tar.gz
+
 # shaderc
 mkdir -p shaderc
 cat >shaderc/README <<'HEREDOC'

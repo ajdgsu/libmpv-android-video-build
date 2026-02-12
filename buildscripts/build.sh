@@ -75,6 +75,9 @@ setup_prefix () {
 	local cpu_family=${ndk_triple%%-*}
 	[ "$cpu_family" == "i686" ] && cpu_family=x86
 
+	# Get toolchain path
+	local toolchain_path="$PWD/sdk/android-sdk-linux/ndk/$v_ndk/toolchains/llvm/prebuilt/linux-x86_64/bin"
+
 	# meson wants to be spoonfed this file, so create it ahead of time
 	# also define: release build, static libs and no source downloads at runtime(!!!)
 	cat >"$prefix_dir/crossfile.txt" <<CROSSFILE
@@ -83,11 +86,11 @@ buildtype = 'release'
 default_library = 'static'
 wrap_mode = 'nodownload'
 [binaries]
-c = '$CC'
-cpp = '$CXX'
-ar = 'llvm-ar'
-nm = 'llvm-nm'
-strip = 'llvm-strip'
+c = '$toolchain_path/$CC'
+cpp = '$toolchain_path/$CXX'
+ar = '$toolchain_path/llvm-ar'
+nm = '$toolchain_path/llvm-nm'
+strip = '$toolchain_path/llvm-strip'
 pkg-config = 'pkg-config'
 [host_machine]
 system = 'android'
