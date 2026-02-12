@@ -1,0 +1,36 @@
+From: Assistant
+Date: Thu, 13 Feb 2026 00:00:00 +0000
+Subject: [PATCH] Fix FFmpeg 8.0 compatibility: FF_PROFILE_* renamed to AV_PROFILE_*
+
+FFmpeg 8.0 renamed FF_PROFILE_* macros to AV_PROFILE_*.
+This patch adds backward compatibility definitions for building
+with FFmpeg 8.0+.
+
+---
+ demux/demux_mkv.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/demux/demux_mkv.c b/demux/demux_mkv.c
+index 1234567..abcdefg 100644
+--- a/demux/demux_mkv.c
++++ b/demux/demux_mkv.c
+@@ -36,6 +36,17 @@
+ #include <libavcodec/avcodec.h>
+ #include <libavcodec/version.h>
+ 
++// Compatibility with FFmpeg 8.0+ which renamed FF_PROFILE_* to AV_PROFILE_*
++#ifndef FF_PROFILE_UNKNOWN
++#define FF_PROFILE_UNKNOWN AV_PROFILE_UNKNOWN
++#endif
++#ifndef FF_PROFILE_ARIB_PROFILE_A
++#define FF_PROFILE_ARIB_PROFILE_A AV_PROFILE_ARIB_PROFILE_A
++#endif
++#ifndef FF_PROFILE_ARIB_PROFILE_C
++#define FF_PROFILE_ARIB_PROFILE_C AV_PROFILE_ARIB_PROFILE_C
++#endif
++
+ #include <libplacebo/utils/libav.h>
+ 
+ #include "config.h"
+-- 
+2.40.0
