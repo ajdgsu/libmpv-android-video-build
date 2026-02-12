@@ -32,6 +32,11 @@ zip -q -r debug-symbols-default.zip prefix/arm64-v8a/lib
 
 cd deps/media-kit-android-helper
 
+# Set Android SDK environment
+export ANDROID_HOME="$PWD/../../sdk/android-sdk-linux"
+export ANDROID_SDK_ROOT="$ANDROID_HOME"
+echo "sdk.dir=$ANDROID_HOME" > local.properties
+
 sudo chmod +x gradlew
 ./gradlew assembleRelease
 
