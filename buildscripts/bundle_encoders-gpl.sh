@@ -25,15 +25,12 @@ cp flavors/encoders-gpl.sh scripts/ffmpeg.sh
 
 # --------------------------------------------------
 
-./build.sh
+./build.sh --arch arm64
 
-zip -r debug-symbols-encoders-gpl.zip prefix/*/lib
+zip -r debug-symbols-encoders-gpl.zip prefix/arm64-v8a/lib
 
 . ./include/depinfo.sh
 ./sdk/android-sdk-linux/ndk/$v_ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip --strip-all prefix/arm64-v8a/usr/local/lib/libmpv.so
-./sdk/android-sdk-linux/ndk/$v_ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip --strip-all prefix/armeabi-v7a/usr/local/lib/libmpv.so
-./sdk/android-sdk-linux/ndk/$v_ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip --strip-all prefix/x86/usr/local/lib/libmpv.so
-./sdk/android-sdk-linux/ndk/$v_ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip --strip-all prefix/x86_64/usr/local/lib/libmpv.so
 
 # --------------------------------------------------
 
@@ -45,16 +42,10 @@ sudo chmod +x gradlew
 unzip -o app/build/outputs/apk/release/app-release.apk -d app/build/outputs/apk/release
 
 cp ../../prefix/arm64-v8a/usr/local/lib/libmpv.so      app/build/outputs/apk/release/lib/arm64-v8a
-cp ../../prefix/armeabi-v7a/usr/local/lib/libmpv.so    app/build/outputs/apk/release/lib/armeabi-v7a
-cp ../../prefix/x86/usr/local/lib/libmpv.so            app/build/outputs/apk/release/lib/x86
-cp ../../prefix/x86_64/usr/local/lib/libmpv.so         app/build/outputs/apk/release/lib/x86_64
 
 cd app/build/outputs/apk/release
 
 zip -r encoders-gpl-arm64-v8a.jar      lib/arm64-v8a/*.so
-zip -r encoders-gpl-armeabi-v7a.jar    lib/armeabi-v7a/*.so
-zip -r encoders-gpl-x86.jar            lib/x86/*.so
-zip -r encoders-gpl-x86_64.jar         lib/x86_64/*.so
 
 md5sum *.jar
 
