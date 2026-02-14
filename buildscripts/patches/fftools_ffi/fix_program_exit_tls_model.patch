@@ -1,14 +1,13 @@
 diff --git a/cmdutils.c b/cmdutils.c
 --- a/cmdutils.c
 +++ b/cmdutils.c
-@@ -82,7 +82,9 @@ void init_dynload(void)
+@@ -82,7 +82,8 @@ void init_dynload(void)
  #endif
  }
  
 -static __thread void (*program_exit)(int ret);
-+/* Use a shared-library-safe TLS model when linked into libmpv.so. */
-+static __thread void (*program_exit)(int ret)
-+    __attribute__((tls_model("global-dynamic")));
++/* Shared callback; keep non-TLS to avoid AArch64 TLS relocations in libmpv.so. */
++static void (*program_exit)(int ret);
  
  void register_exit(void (*cb)(int ret))
  {
