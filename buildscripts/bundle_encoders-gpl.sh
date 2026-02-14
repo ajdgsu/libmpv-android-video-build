@@ -13,6 +13,7 @@ fi
 export ENCODERS_GPL=1
 
 ./download.sh
+./patch.sh
 ./patch-encoders-gpl.sh
 
 # --------------------------------------------------
